@@ -1,12 +1,12 @@
 // Copyright 2018-present 650 Industries. All rights reserved.
 
 #import <EXBattery/EXBattery.h>
-#import <ExpoModulesCore/EXUtilities.h>
+#import <UMCore/UMUtilities.h>
 
 @interface EXBattery ()
 
-@property (nonatomic, weak) EXModuleRegistry *moduleRegistry;
-@property (nonatomic, weak) id <EXEventEmitterService> eventEmitter;
+@property (nonatomic, weak) UMModuleRegistry *moduleRegistry;
+@property (nonatomic, weak) id <UMEventEmitterService> eventEmitter;
 @property (nonatomic, assign) BOOL hasListeners;
 @property (nonatomic, readonly) EXBatteryState batteryState;
 
@@ -14,7 +14,7 @@
 
 @implementation EXBattery
 
-EX_EXPORT_MODULE(ExpoBattery);
+UM_EXPORT_MODULE(ExpoBattery);
 
 - (NSDictionary *)constantsToExport
 {
@@ -32,13 +32,13 @@ EX_EXPORT_MODULE(ExpoBattery);
   return dispatch_get_main_queue();
 }
 
-- (void)setModuleRegistry:(EXModuleRegistry *)moduleRegistry
+- (void)setModuleRegistry:(UMModuleRegistry *)moduleRegistry
 {
   if (_moduleRegistry) {
     [self invalidate];
   }
   _moduleRegistry = moduleRegistry;
-  _eventEmitter = [moduleRegistry getModuleImplementingProtocol:@protocol(EXEventEmitterService)];
+  _eventEmitter = [moduleRegistry getModuleImplementingProtocol:@protocol(UMEventEmitterService)];
   
   if (moduleRegistry) {
     UIDevice.currentDevice.batteryMonitoringEnabled = YES;
@@ -118,22 +118,22 @@ EX_EXPORT_MODULE(ExpoBattery);
   [_eventEmitter sendEventWithName:@"Expo.powerModeDidChange" body:result];
 }
 
-EX_EXPORT_METHOD_AS(getBatteryLevelAsync,
-                    getBatteryLevelAsyncWithResolver:(EXPromiseResolveBlock)resolve
-                    rejecter:(EXPromiseRejectBlock)reject)
+UM_EXPORT_METHOD_AS(getBatteryLevelAsync,
+                    getBatteryLevelAsyncWithResolver:(UMPromiseResolveBlock)resolve
+                    rejecter:(UMPromiseRejectBlock)reject)
 {
   resolve(@(UIDevice.currentDevice.batteryLevel));
 }
 
-EX_EXPORT_METHOD_AS(getBatteryStateAsync,
-                    getBatteryStateAsyncWithResolver:(EXPromiseResolveBlock)resolve rejecter:(EXPromiseRejectBlock)reject)
+UM_EXPORT_METHOD_AS(getBatteryStateAsync,
+                    getBatteryStateAsyncWithResolver:(UMPromiseResolveBlock)resolve rejecter:(UMPromiseRejectBlock)reject)
 {
   resolve(@([self batteryState]));
 }
 
-EX_EXPORT_METHOD_AS(isLowPowerModeEnabledAsync,
-                    isLowPowerModeEnabledAsyncWithResolver:(EXPromiseResolveBlock)resolve
-                    rejecter:(EXPromiseRejectBlock)reject)
+UM_EXPORT_METHOD_AS(isLowPowerModeEnabledAsync,
+                    isLowPowerModeEnabledAsyncWithResolver:(UMPromiseResolveBlock)resolve
+                    rejecter:(UMPromiseRejectBlock)reject)
 {
   resolve(@(NSProcessInfo.processInfo.isLowPowerModeEnabled));
 }

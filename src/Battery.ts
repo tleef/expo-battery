@@ -1,4 +1,4 @@
-import { EventEmitter, Subscription } from 'expo-modules-core';
+import { EventEmitter, Subscription } from '@unimodules/core';
 
 import {
   BatteryLevelEvent,

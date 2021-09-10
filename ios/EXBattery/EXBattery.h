@@ -1,10 +1,10 @@
 //  Copyright © 2018 650 Industries. All rights reserved.
 
-#import <ExpoModulesCore/EXExportedModule.h>
-#import <ExpoModulesCore/EXModuleRegistryConsumer.h>
+#import <UMCore/UMExportedModule.h>
+#import <UMCore/UMModuleRegistryConsumer.h>
 #import <Foundation/Foundation.h>
-#import <ExpoModulesCore/EXEventEmitter.h>
-#import <ExpoModulesCore/EXEventEmitterService.h>
+#import <UMCore/UMEventEmitter.h>
+#import <UMCore/UMEventEmitterService.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, EXBatteryState) {
 };
 
 
-@interface EXBattery : EXExportedModule <EXModuleRegistryConsumer, EXEventEmitter>
+@interface EXBattery : UMExportedModule <UMModuleRegistryConsumer, UMEventEmitter>
 
 @end
 

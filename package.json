@@ -1,5 +1,5 @@
 {
-  "name": "@tleef/expo-battery",
+  "name": "expo-battery",
   "version": "5.0.0",
   "description": "Provides battery information for the physical device, as well as corresponding event listeners.",
   "main": "build/Battery.js",
@@ -20,18 +20,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/tleef/expo-battery.git"
+    "url": "https://github.com/expo/expo.git",
+    "directory": "packages/expo-battery"
   },
   "bugs": {
     "url": "https://github.com/expo/expo/issues"
   },
   "author": "650 Industries, Inc.",
   "license": "MIT",
-  "homepage": "https://docs.expo.dev/versions/latest/sdk/battery/",
-  "dependencies": {
-    "expo-modules-core": "~0.3.0"
-  },
+  "homepage": "https://docs.expo.io/versions/latest/sdk/battery/",
   "devDependencies": {
     "expo-module-scripts": "^2.0.0"
-  }
+  },
+  "gitHead": "c80d4c938920c5111e34c2dbca3a6bf500dff0e1"
 }

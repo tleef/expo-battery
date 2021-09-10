@@ -1,4 +1,4 @@
 {
-  "name": "@tleef/expo-battery",
+  "name": "expo-battery",
   "platforms": ["ios", "android", "web"]
 }
